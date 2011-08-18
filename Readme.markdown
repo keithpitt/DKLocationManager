@@ -109,4 +109,4 @@ DKLocationManager is licensed under the MIT License:
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 
-[DKLocationManager.h]: https://github.com/keithpitt/DKLocationManager/blob/master/Classes/DKLocationManager/DKLocationManager.h
+[DKLocationManager.h]: https://github.com/keithpitt/DKLocationManager/blob/master/DKLocationManager.h
