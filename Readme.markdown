@@ -23,8 +23,6 @@ You will also need to add "CoreLocation" as a Framework to your project.
    Lion in the iPhone simulator. Here is a way of using the stubbing
    feature of DKLocationManager to stub out the location request:
 
-        // When using the simulator, stub to West Perth, as the Location
-        // Manager does not work on OSX Lion.
         #if TARGET_IPHONE_SIMULATOR
           CLLocation * stubbedLocation = [[CLLocation alloc] initWithLatitude:-31.950524 longitude:115.835825];
           locationManager.stubbedLocation = stubbedLocation;
