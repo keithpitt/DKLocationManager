@@ -1,6 +1,6 @@
 # DKLocationManager
 
-DKLocationManager is a wrapper around CLLocationManager that allows for
+`DKLocationManager` is a wrapper around CLLocationManager that allows for
 location stubbing and usage via blocks.
 
 It is used in the apps written by [Mostly Disco](http://www.mostlydisco.com)
@@ -9,19 +9,19 @@ It is used in the apps written by [Mostly Disco](http://www.mostlydisco.com)
 
 Copy the files into to your project folder, and add them to your Xcode project.
 
-You will also need to add "CoreLocation" as a Framework to your project.
+You will also need to add `CoreLocation` as a Framework to your project.
 
 ## Usage
 
-1. Include [DKLocationManager.h][] somewhere in application
+1. Include `DKLocationManager.h` somewhere in application
 
-2. Create an instance of the DKLocationManager class:
+2. Create an instance of the `DKLocationManager` class:
 
         DKLocationManager * locationManager = [[DKLocationManager alloc] init];
 
-3. At the time of writing, CLLocationManager doesn't quite work under
+3. At the time of writing, `CLLocationManager` doesn't quite work under
    Lion in the iPhone simulator. Here is a way of using the stubbing
-   feature of DKLocationManager to stub out the location request:
+   feature of `DKLocationManager` to stub out the location request:
 
         #if TARGET_IPHONE_SIMULATOR
           CLLocation * stubbedLocation = [[CLLocation alloc] initWithLatitude:-31.950524 longitude:115.835825];
@@ -106,5 +106,3 @@ DKLocationManager is licensed under the MIT License:
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
-
-[DKLocationManager.h]: https://github.com/keithpitt/DKLocationManager/blob/master/DKLocationManager.h
