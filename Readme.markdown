@@ -24,9 +24,13 @@ You will also need to add `CoreLocation` as a Framework to your project.
    feature of `DKLocationManager` to stub out the location request:
 
         #if TARGET_IPHONE_SIMULATOR
+
           CLLocation * stubbedLocation = [[CLLocation alloc] initWithLatitude:-31.950524 longitude:115.835825];
+
           locationManager.stubbedLocation = stubbedLocation;
+
           [stubbedLocation release];
+
         #endif
 
 4. Add your callbacks:
