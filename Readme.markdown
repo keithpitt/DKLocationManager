@@ -13,7 +13,7 @@ You will also need to add "CoreLocation" as a Framework to your project.
 
 ## Usage
 
-1. Include [DKLocationManager.h][] into your controller
+1. Include [DKLocationManager.h][] somewhere in application
 
 2. Create an instance of the DKLocationManager class:
 
@@ -57,7 +57,7 @@ You will also need to add "CoreLocation" as a Framework to your project.
 
             default:
               errorMessage =
-              NSLocalizedString(@"An unexpected error occured when trying to determine your location. Please try again later.", nil);
+              NSLocalizedString(@"An unexpected error occured when trying to determine your location.", nil);
               break;
 
           }
@@ -68,7 +68,6 @@ You will also need to add "CoreLocation" as a Framework to your project.
 
 5. When you're ready to start finding the users location:
 
-        // Start the find location process
         [locationManager findLocation];
 
 6. And, don't forget to release at the end:
