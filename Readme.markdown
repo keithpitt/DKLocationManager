@@ -13,68 +13,76 @@ You will also need to add `CoreLocation` as a Framework to your project.
 
 ## Usage
 
-1. Include `DKLocationManager.h` somewhere in application
+* Include `DKLocationManager.h` somewhere in application
 
-2. Create an instance of the `DKLocationManager` class:
+* Create an instance of the `DKLocationManager` class:
 
-        DKLocationManager * locationManager = [[DKLocationManager alloc] init];
+```objective-c
+DKLocationManager * locationManager = [[DKLocationManager alloc] init];
+```
 
-3. At the time of writing, `CLLocationManager` doesn't quite work under
-   Lion in the iPhone simulator. Here is a way of using the stubbing
-   feature of `DKLocationManager` to stub out the location request:
+* At the time of writing, `CLLocationManager` doesn't quite work under
+  Lion in the iPhone simulator. Here is a way of using the stubbing
+  feature of `DKLocationManager` to stub out the location request:
 
-        #if TARGET_IPHONE_SIMULATOR
+```objective-c
+#if TARGET_IPHONE_SIMULATOR
 
-          CLLocation * stubbedLocation = [[CLLocation alloc] initWithLatitude:-31.950524 longitude:115.835825];
+        CLLocation * stubbedLocation = [[CLLocation alloc] initWithLatitude:-31.950524 longitude:115.835825];
+        locationManager.stubbedLocation = stubbedLocation;
+        [stubbedLocation release];
 
-          locationManager.stubbedLocation = stubbedLocation;
+#endif
+```
 
-          [stubbedLocation release];
+* Add your callbacks:
 
-        #endif
+```objective-c
+locationManager.locationUpdatedBlock = ^(CLLocation * location) {
 
-4. Add your callbacks:
+    NSLog(@"Location change to: %@", location);
 
-        locationManager.locationUpdatedBlock = ^(CLLocation * location) {
+}
 
-          NSLog(@"Location change to: %@", location);
+locationManager.locationErrorBlock = ^(NSError * error) {
 
-        }
+    NSString * errorMessage;
 
-        locationManager.locationErrorBlock = ^(NSError * error) {
+    switch ([error code]) {
 
-          NSString * errorMessage;
+        case kCLErrorLocationUnknown:
+            errorMessage =
+                NSLocalizedString(@"We could not determine your location. Please try again later.", nil);
+            break;
 
-          switch ([error code]) {
+        case kCLErrorDenied:
+            errorMessage =
+                NSLocalizedString(@"We could not access your current location.", nil);
+            break;
 
-            case kCLErrorLocationUnknown:
-              errorMessage =
-              NSLocalizedString(@"We could not determine your location. Please try again later.", nil);
-              break;
+        default:
+            errorMessage =
+                NSLocalizedString(@"An unexpected error occured when trying to determine your location.", nil);
+            break;
 
-            case kCLErrorDenied:
-              errorMessage =
-              NSLocalizedString(@"We could not access your current location.", nil);
-              break;
+    };
+    
+    NSLog(@"Error: %@", errorMessage);
 
-            default:
-              errorMessage =
-              NSLocalizedString(@"An unexpected error occured when trying to determine your location.", nil);
-              break;
+};
+```
 
-          }
+* When you're ready to start finding the users location:
 
-          NSLog(@"Error: %@", errorMessage);
+```objective-c
+[locationManager findLocation];
+```
 
-        };
+* And, don't forget to release at the end:
 
-5. When you're ready to start finding the users location:
-
-        [locationManager findLocation];
-
-6. And, don't forget to release at the end:
-
-        [locationManager release];
+```objective-c
+[locationManager release];
+```
 
 ## Note on Patches/Pull Requests
 
