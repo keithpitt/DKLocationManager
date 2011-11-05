@@ -1,0 +1,14 @@
+Vendor::Spec.new do |s|
+
+  s.name        = "DKLocationManager"
+  s.version     = "0.1"
+
+  s.authors     = "keithpitt"
+  s.email       = "me@keithpitt.com"
+  s.description = "A wrapper around CLLocationManager that makes it easy to stub out locations and uses a Objective-C blocks"
+
+  s.source      = "https://github.com/keithpitt/DKLocationManager"
+
+  s.files       = `git ls-files Classes`.split("\n")
+
+end
